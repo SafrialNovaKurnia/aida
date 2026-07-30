@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun ke-23, Nur Aida Umaese ❤️</title>
+    <meta name="description" content="Ucapan Spesial Ulang Tahun ke-23 untuk Calon Istri Tercinta: Nur Aida Umaese. Semoga panjang umur, bahagia, dan dilancarkan menuju pernikahan.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Canvas Floating Hearts Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Music Control Floating Button -->
+    <div class="music-control-container">
+        <button id="musicToggleBtn" class="glass-btn pulse-glow" aria-label="Putar Musik Romantic">
+            <i class="fas fa-music"></i> <span id="musicText">Putar Musik Romantic</span>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        
+        <!-- Header / Hero Section -->
+        <header class="hero-section">
+            <div class="badge-container">
+                <span class="birthday-badge">
+                    <i class="fas fa-heart heart-icon"></i> Special 23rd Birthday <i class="fas fa-heart heart-icon"></i>
+                </span>
+            </div>
+            
+            <h1 class="main-title">
+                Selamat Ulang Tahun, <br>
+                <span class="highlight-name">Nur Aida Umaese</span>
+            </h1>
+            
+            <p class="subtitle">
+                Untuk calon istriku tercinta yang kini menginjak usia <strong>23 tahun</strong>.
+            </p>
+
+            <div class="hero-actions">
+                <button class="btn btn-primary" onclick="openEnvelope()">
+                    <i class="fas fa-envelope-open-text"></i> Buka Surat Cinta
+                </button>
+                <a href="#cake-section" class="btn btn-secondary">
+                    <i class="fas fa-birthday-cake"></i> Tiup Lilin 23
+                </a>
+            </div>
+        </header>
+
+        <!-- Interactive Envelope Modal / Section -->
+        <section id="envelope-section" class="envelope-modal hidden">
+            <div class="modal-overlay" onclick="closeEnvelope()"></div>
+            <div class="envelope-wrapper">
+                <button class="close-modal-btn" onclick="closeEnvelope()">&times;</button>
+                
+                <div class="letter-card glass-card">
+                    <div class="letter-header">
+                        <i class="fas fa-crown crown-icon"></i>
+                        <h2>Surat Cinta Ulang Tahun ke-23</h2>
+                        <div class="decorative-line"></div>
+                    </div>
+                    
+                    <div class="letter-body">
+                        <p class="salutation">Bismillahirahmanirrahim, Sayangku <strong>Nur Aida Umaese</strong>,</p>
+                        
+                        <p>
+                            Selamat ulang tahun yang ke-23! Di hari yang penuh kebahagiaan dan kehangatan ini, aku ingin bersyukur kepada Allah SWT karena telah menghadirkan sosok wanita luar biasa sepertimu dalam hidupku.
+                        </p>
+
+                        <p>
+                            Usia 23 adalah gerbang kedewasaan yang indah. Melihatmu tumbuh menjadi wanita yang makin anggun, sabar, dan penuh kasih sayang membuat rasa yakin di hatiku semakin kokoh. Kamu bukan hanya kekasih hati, tapi calon istri dan pendamping hidup yang selalu aku impikan dan doakan dalam tiap sujudku.
+                        </p>
+
+                        <p>
+                            Di usiamu yang ke-23 ini, aku berdoa agar setiap langkahmu selalu dinaungi berkah, kesehatan, kedamaian hati, dan kesuksesan. Semoga Allah melapangkan jalanmu, melindungimu dari segala duka, dan mempererat ikatan cinta kita hingga melangkah bersama menuju ikatan suci pernikahan.
+                        </p>
+
+                        <p class="signature-quote">
+                            "Terima kasih telah menjadi alasan di balik senyumku. Selamat bertambah usia, calon makmumku tercinta."
+                        </p>
+                    </div>
+
+                    <div class="letter-footer">
+                        <p class="sender">Dengan Seluruh Kasih Sayang,<br><span class="heart-text">❤️ Calon Suamimu ❤️</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cake & Blow Candles Section -->
+        <section id="cake-section" class="section-card glass-card">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">Make A Wish</span>
+                <h2>Momen Spesial Ulang Tahun ke-23</h2>
+            </div>
+
+            <div class="cake-display-container">
+                <div class="cake-img-wrapper">
+                    <img src="images/cake.jpg" alt="Kue Ulang Tahun 23 Nur Aida Umaese" id="cakeImage" class="cake-img">
+                    <div class="candles-overlay">
+                        <div class="flame-particle" id="flame1"></div>
+                        <div class="flame-particle" id="flame2"></div>
+                        <div class="flame-particle" id="flame3"></div>
+                    </div>
+                </div>
+
+                <div class="cake-controls">
+                    <p class="cake-hint" id="cakeHint">Klik tombol di bawah untuk membuat harapan & meniup lilin usiamu yang ke-23!</p>
+                    <button id="blowCandleBtn" class="btn btn-gold pulse-btn" onclick="blowCandles()">
+                        <i class="fas fa-wind"></i> Make a Wish & Tiup Lilin 🎂
+                    </button>
+                    <div id="wishMessage" class="wish-reveal hidden">
+                        <div class="wish-box">
+                            <i class="fas fa-sparkles spark-icon"></i>
+                            <p id="typedWishText"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 23 Reasons / Wishes Cards Section -->
+        <section class="reasons-section">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">Doa & Harapan</span>
+                <h2>Doa Terbaik di Usia 23 Tahun</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="wish-card glass-card">
+                    <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3>Kesehatan & Keberkahan</h3>
+                    <p>Semoga Aida selalu diberikan kesehatan, umur yang berkah, serta ketenangan jiwa dan pikiran setiap hari.</p>
+                </div>
+
+                <div class="wish-card glass-card">
+                    <div class="card-icon"><i class="fas fa-hands-praying"></i></div>
+                    <h3>Kelancaran Pernikahan</h3>
+                    <p>Semoga Allah mudahkan setiap niat baik kita menuju hari pernikahan, dilancarkan rezeki dan persiapannya.</p>
+                </div>
+
+                <div class="wish-card glass-card">
+                    <div class="card-icon"><i class="fas fa-smile-beam"></i></div>
+                    <h3>Kebahagiaan Berlipat</h3>
+                    <p>Semoga senyuman manis Nur Aida selalu mengembang dan dikelilingi oleh orang-orang yang tulus mencintaimu.</p>
+                </div>
+
+                <div class="wish-card glass-card">
+                    <div class="card-icon"><i class="fas fa-star"></i></div>
+                    <h3>Cita-cita & Impian</h3>
+                    <p>Semoga di usia 23 tahun ini, segala harapan, karir, dan cita-cita manis Aida satu per satu terkabul indah.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Love Quiz / Appreciation Accordion -->
+        <section class="accordion-section glass-card">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">Spesial untuk Nur Aida Umaese</span>
+                <h2>Hal-hal Yang Membuatku Selalu Bersyukur</h2>
+            </div>
+
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span><i class="fas fa-gem"></i> Kelembutan & Ketulusan Hati Aida</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Cara Aida bertutur kata, perhatian kecil yang selalu Aida berikan, dan kelembutan hatimu adalah alasan kenapa aku sangat beruntung memiliki calon istri sepertimu.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span><i class="fas fa-sun"></i> Penyejuk & Penenang di Setiap Keadaan</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Di usia 23 ini, Aida makin matang dan senantiasa menjadi tempat bersandar serta penenang yang sempurna saat hari-hari terasa berat.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span><i class="fas fa-ring"></i> Masa Depan Bersama Nur Aida Umaese</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Aku tak sabar untuk membangun rumah tangga yang sakinah, mawaddah, warahmah bersamamu. Selamat memasuki usia 23 tahun, bidadariku!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Custom Greeting Generator / Copy Section -->
+        <section class="wishes-copy-section glass-card">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">Pilihan Kata Ucapan</span>
+                <h2>Pesan Chat Ulang Tahun (Siap Kirim)</h2>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab(0)">Penuh Cinta & Romantis</button>
+                    <button class="tab-btn" onclick="switchTab(1)">Doa & Islami</button>
+                    <button class="tab-btn" onclick="switchTab(2)">Singkat & Menyentuh</button>
+                </div>
+
+                <div class="tabs-body">
+                    <!-- Tab 0 -->
+                    <div class="tab-content active" id="tab-0">
+                        <div class="copy-box">
+                            <p id="msg-0">
+Selamat ulang tahun yang ke-23 untuk calon istriku tercinta, Nur Aida Umaese ❤️✨
+<br><br>
+Di usiamu yang semakin dewasa ini, terima kasih sudah hadir dan menjadi warna paling indah dalam hidupku. Senyummu selalu jadi penenang, dan kebaikan hatimu membuatku makin yakin bahwa kamu adalah takdir terbaik yang Allah kirimkan.
+<br><br>
+Semoga di usia 23 tahun ini, Aida makin bahagia, sehat selalu, dipanjangkan umurnya, dan dimudahkan segala niat baik kita menuju hari pernikahan kelak. Aku cinta kamu, Sayang. Happy 23rd Birthday! 🌹🎂🥂
+                            </p>
+                            <button class="btn btn-sm btn-gold" onclick="copyText('msg-0')"><i class="fas fa-copy"></i> Salin Ucapan</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 1 -->
+                    <div class="tab-content" id="tab-1">
+                        <div class="copy-box">
+                            <p id="msg-1">
+Barakallah fii umrik calon istriku tercinta, Nur Aida Umaese yang ke-23 tahun 🤲❤️
+<br><br>
+Semoga Allah SWT senantiasa melimpahkan rahmat, kesehatan, keberkahan umur, dan kebahagiaan yang tak pernah terputus untukmu. Semoga di usia yang ke-23 ini, Aida semakin disayang Allah, dijauhkan dari segala keburukan, dan Allah lancarkan serta permudah jalan kita menuju ikatan suci pernikahan yang sakinah, mawaddah, warahmah. Aamiin ya Rabbal 'Alamin. 🕊️✨
+                            </p>
+                            <button class="btn btn-sm btn-gold" onclick="copyText('msg-1')"><i class="fas fa-copy"></i> Salin Ucapan</button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2 -->
+                    <div class="tab-content" id="tab-2">
+                        <div class="copy-box">
+                            <p id="msg-2">
+Happy 23rd Birthday, Nur Aida Umaese — calon istri impianku! 💕🎂
+<br><br>
+Semoga di umur yang ke-23 ini, semua impian manis Aida bisa terwujud satu per satu. Terima kasih selalu ada dan mencintaiku dengan tulus. Aku bersyukur memiliki kamu di sisiku. Dilancarkan terus ya sayang sampai hari-H kita. I love you so much! 🥰
+                            </p>
+                            <button class="btn btn-sm btn-gold" onclick="copyText('msg-2')"><i class="fas fa-copy"></i> Salin Ucapan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Made with ❤️ for <strong>Nur Aida Umaese</strong> | 23rd Birthday Celebration</p>
+        </footer>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast hidden">Teks ucapan berhasil disalin! 📋</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
