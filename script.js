@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initParticlesCanvas();
-    setupAudioSynth();
+    setupAudioPlayer();
 });
 
 /* -------------------------------------------------------------
@@ -56,7 +56,6 @@ function initParticlesCanvas() {
             ctx.globalAlpha = this.opacity;
             ctx.fillStyle = this.color;
 
-            // Draw Heart Shape
             ctx.beginPath();
             const topCurveHeight = this.size * 0.3;
             ctx.moveTo(0, topCurveHeight);
@@ -88,82 +87,43 @@ function initParticlesCanvas() {
 }
 
 /* -------------------------------------------------------------
- * 2. Romantic Audio Melody Synthesizer (Web Audio API)
+ * 2. Pamungkas - Happy Birthday To You Audio Player
  * ------------------------------------------------------------- */
-let audioCtx = null;
-let isPlayingMusic = false;
-let musicInterval = null;
+let bgAudio = null;
+let isPlayingAudio = false;
 
-function setupAudioSynth() {
+function setupAudioPlayer() {
+    bgAudio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicToggleBtn');
     const musicText = document.getElementById('musicText');
 
+    if (!bgAudio) return;
+
     musicBtn.addEventListener('click', () => {
-        if (!audioCtx) {
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-
-        if (audioCtx.state === 'suspended') {
-            audioCtx.resume();
-        }
-
-        if (isPlayingMusic) {
-            stopMusic();
-            musicText.innerText = "Putar Musik Romantic";
-            musicBtn.classList.remove('active');
-        } else {
-            startRomanticTune();
-            musicText.innerText = "Hentikan Musik 🎵";
-            musicBtn.classList.add('active');
-        }
+        toggleMusic();
     });
 }
 
-function startRomanticTune() {
-    isPlayingMusic = true;
+function toggleMusic() {
+    const musicBtn = document.getElementById('musicToggleBtn');
+    const musicText = document.getElementById('musicText');
 
-    const notes = [
-        [261.63, 329.63, 392.00, 493.88], // Cmaj7
-        [349.23, 440.00, 523.25, 659.25], // Fmaj7
-        [293.66, 349.23, 440.00, 523.25], // Dm7
-        [392.00, 493.88, 587.33, 698.46]  // G7
-    ];
+    if (!bgAudio) return;
 
-    let chordIdx = 0;
-
-    function playChord() {
-        if (!isPlayingMusic || !audioCtx) return;
-
-        const currentNotes = notes[chordIdx % notes.length];
-        chordIdx++;
-
-        currentNotes.forEach((freq, idx) => {
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-            gain.gain.setValueAtTime(0, audioCtx.currentTime);
-            gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.4);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.8);
-
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            osc.start(audioCtx.currentTime + idx * 0.15);
-            osc.stop(audioCtx.currentTime + 3.0);
+    if (isPlayingAudio) {
+        bgAudio.pause();
+        isPlayingAudio = false;
+        musicText.innerText = "Putar Lagu Pamungkas 🎵";
+        musicBtn.classList.remove('playing');
+    } else {
+        bgAudio.play().then(() => {
+            isPlayingAudio = true;
+            musicText.innerText = "Hentikan Musik 🎵";
+            musicBtn.classList.add('playing');
+        }).catch(err => {
+            console.warn("Audio play blocked by browser, trying user touch...", err);
+            // Fallback or retry
         });
-    }
-
-    playChord();
-    musicInterval = setInterval(playChord, 3000);
-}
-
-function stopMusic() {
-    isPlayingMusic = false;
-    if (musicInterval) {
-        clearInterval(musicInterval);
     }
 }
 
@@ -173,11 +133,18 @@ function stopMusic() {
 function openEnvelope() {
     const modal = document.getElementById('envelope-section');
     modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Auto-start Pamungkas song when opening envelope if not playing
+    if (!isPlayingAudio && bgAudio) {
+        toggleMusic();
+    }
 }
 
 function closeEnvelope() {
     const modal = document.getElementById('envelope-section');
     modal.classList.add('hidden');
+    document.body.style.overflow = '';
 }
 
 /* -------------------------------------------------------------
@@ -196,6 +163,11 @@ function blowCandles() {
     btn.innerHTML = '<i class="fas fa-check-circle"></i> Lilin ke-24 Telah Ditiup! ✨';
     btn.classList.remove('pulse-btn');
     btn.style.opacity = '0.8';
+
+    // Auto-start Pamungkas song if not playing
+    if (!isPlayingAudio && bgAudio) {
+        toggleMusic();
+    }
 
     // Show wish message
     const wishMsg = document.getElementById('wishMessage');
@@ -224,43 +196,20 @@ function toggleAccordion(button) {
     const item = button.parentElement;
     const isActive = item.classList.contains('active');
 
-    // Close all
     document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
 
-    // Toggle selected
     if (!isActive) {
         item.classList.add('active');
     }
 }
 
 /* -------------------------------------------------------------
- * 6. Tabs Switcher
+ * 6. Copy Single Romantic Message Logic
  * ------------------------------------------------------------- */
-function switchTab(index) {
-    document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
-        if (idx === index) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-
-    document.querySelectorAll('.tab-content').forEach((content, idx) => {
-        if (idx === index) {
-            content.classList.add('active');
-        } else {
-            content.classList.remove('active');
-        }
-    });
-}
-
-/* -------------------------------------------------------------
- * 7. Copy Text & Toast Notification
- * ------------------------------------------------------------- */
-function copyText(elementId) {
-    const text = document.getElementById(elementId).innerText;
+function copyRomanticMessage() {
+    const text = document.getElementById('romantic-msg-text').innerText;
     navigator.clipboard.writeText(text).then(() => {
-        showToast("Teks ucapan berhasil disalin! 📋");
+        showToast("Ucapan romantis berhasil disalin! 📋");
     }).catch(err => {
         showToast("Gagal menyalin teks.");
     });

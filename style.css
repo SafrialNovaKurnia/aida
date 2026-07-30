@@ -1,4 +1,4 @@
-/* CSS Design System for Birthday Web App */
+/* CSS Design System for Birthday Web App - Optimized for Desktop, Tablet, and Smartphone */
 :root {
     --primary: #e63946;
     --primary-gradient: linear-gradient(135deg, #ff4d6d 0%, #c9184a 50%, #800f2f 100%);
@@ -51,32 +51,42 @@ body {
 /* Floating Music Control */
 .music-control-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     z-index: 100;
 }
 
 .glass-btn {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     color: #fff;
     padding: 10px 18px;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .glass-btn:hover {
     background: rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
+}
+
+.glass-btn.playing {
+    background: rgba(255, 77, 109, 0.3);
+    border-color: #ff4d6d;
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+}
+
+.fa-spin-slow {
+    animation: fa-spin 4s infinite linear;
 }
 
 .pulse-glow {
@@ -88,13 +98,34 @@ body {
     100% { box-shadow: 0 0 22px rgba(255, 77, 109, 0.9); }
 }
 
+/* Song Info Banner */
+.song-info-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 0, 0, 0.15);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ffd1dc;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    margin: 10px auto 0;
+}
+
+.youtube-icon {
+    color: #ff0000;
+    font-size: 1.1rem;
+}
+
 /* App Container */
 .app-container {
-    max-width: 900px;
+    width: 100%;
+    max-width: 960px;
     margin: 0 auto;
     padding: 40px 20px 60px;
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 /* Glass Card Common */
@@ -104,10 +135,11 @@ body {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 35px 28px;
-    margin-bottom: 40px;
+    padding: clamp(20px, 4vw, 36px);
+    margin-bottom: 35px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
     transition: transform 0.3s ease, border-color 0.3s ease;
+    text-align: left;
 }
 
 .glass-card:hover {
@@ -117,7 +149,7 @@ body {
 /* Hero Section */
 .hero-section {
     text-align: center;
-    padding: 40px 10px 50px;
+    padding: clamp(20px, 5vw, 40px) 10px clamp(30px, 6vw, 50px);
 }
 
 .badge-container {
@@ -130,7 +162,7 @@ body {
     color: var(--text-sub);
     padding: 8px 20px;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 600;
@@ -151,7 +183,7 @@ body {
 
 .main-title {
     font-family: var(--font-heading);
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 5vw, 3rem);
     line-height: 1.2;
     margin-bottom: 15px;
     font-weight: 700;
@@ -162,17 +194,18 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: var(--font-cursive);
-    font-size: 3.8rem;
+    font-size: clamp(2.5rem, 8vw, 4.2rem);
     font-weight: 700;
     display: block;
-    margin-top: 5px;
+    margin-top: 8px;
+    word-break: break-word;
     text-shadow: 0 0 20px rgba(247, 37, 133, 0.3);
 }
 
 .subtitle {
-    font-size: 1.15rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
     color: var(--text-sub);
-    max-width: 600px;
+    max-width: 620px;
     margin: 0 auto 30px;
     font-weight: 300;
 }
@@ -180,23 +213,26 @@ body {
 .hero-actions {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
     flex-wrap: wrap;
 }
 
 /* Buttons */
 .btn {
-    padding: 14px 28px;
+    padding: clamp(12px, 2.5vw, 15px) clamp(22px, 4vw, 30px);
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     font-weight: 600;
     cursor: pointer;
     border: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     text-decoration: none;
     transition: all 0.3s ease;
+    min-height: 48px;
 }
 
 .btn-primary {
@@ -233,11 +269,6 @@ body {
     box-shadow: 0 12px 30px rgba(255, 183, 3, 0.6);
 }
 
-.btn-sm {
-    padding: 8px 16px;
-    font-size: 0.85rem;
-}
-
 /* Envelope Modal */
 .envelope-modal {
     position: fixed;
@@ -249,7 +280,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     opacity: 1;
     transition: opacity 0.4s ease;
 }
@@ -266,7 +297,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);
 }
 
@@ -275,6 +306,9 @@ body {
     z-index: 2;
     max-width: 650px;
     width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 24px;
     animation: zoomIn 0.4s ease forwards;
 }
 
@@ -285,8 +319,8 @@ body {
 
 .close-modal-btn {
     position: absolute;
-    top: -15px;
-    right: -15px;
+    top: 15px;
+    right: 15px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -303,9 +337,9 @@ body {
 }
 
 .letter-card {
-    background: linear-gradient(145deg, rgba(30, 15, 45, 0.95), rgba(15, 5, 25, 0.98));
+    background: linear-gradient(145deg, rgba(30, 15, 45, 0.96), rgba(15, 5, 25, 0.98));
     border: 2px solid rgba(255, 77, 109, 0.4);
-    position: relative;
+    margin-bottom: 0;
 }
 
 .letter-header {
@@ -321,7 +355,7 @@ body {
 
 .letter-header h2 {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
     color: #fff;
 }
 
@@ -334,7 +368,7 @@ body {
 }
 
 .letter-body {
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     color: #e2d9f3;
     line-height: 1.8;
 }
@@ -344,13 +378,13 @@ body {
 }
 
 .salutation {
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
     color: #fff;
 }
 
 .signature-quote {
     font-family: var(--font-cursive);
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem);
     color: #ff9ebb;
     background: rgba(255, 77, 109, 0.1);
     padding: 15px 20px;
@@ -377,20 +411,20 @@ body {
 /* Cake Section */
 .section-title-wrap {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .section-subtitle {
     color: #ff9ebb;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
     font-weight: 700;
 }
 
 .section-title-wrap h2 {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     color: #fff;
     margin-top: 5px;
 }
@@ -404,8 +438,8 @@ body {
 
 .cake-img-wrapper {
     position: relative;
-    width: 280px;
-    height: 280px;
+    width: clamp(200px, 50vw, 290px);
+    height: clamp(200px, 50vw, 290px);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
@@ -452,12 +486,13 @@ body {
 
 .cake-controls {
     text-align: center;
+    width: 100%;
 }
 
 .cake-hint {
     color: var(--text-sub);
     margin-bottom: 15px;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.2vw, 0.95rem);
 }
 
 .wish-reveal {
@@ -469,31 +504,64 @@ body {
     background: rgba(255, 183, 3, 0.12);
     border: 1px dashed var(--accent-gold);
     border-radius: 16px;
-    padding: 20px;
+    padding: 18px 22px;
     color: #fff;
-    font-size: 1.05rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
     display: flex;
     align-items: center;
     gap: 15px;
-
+    text-align: left;
 }
 
 .spark-icon {
     font-size: 1.8rem;
     color: var(--accent-gold);
+    flex-shrink: 0;
 }
 
-/* Grid Cards */
+/* Romantic Single Message Card Section */
+.romantic-card-box {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    padding: clamp(20px, 4vw, 30px);
+    border: 1px solid rgba(255, 183, 3, 0.25);
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(255, 77, 109, 0.08);
+}
+
+.quote-decoration {
+    font-size: 2rem;
+    color: rgba(255, 183, 3, 0.3);
+    margin-bottom: 10px;
+}
+
+.romantic-msg-content {
+    font-size: clamp(0.95rem, 2.4vw, 1.08rem);
+    color: #e2d9f3;
+    line-height: 1.8;
+}
+
+.copy-action-bar {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.copy-btn {
+    width: auto;
+}
+
+/* Grid Cards (Reasons / Wishes) */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-top: 20px;
 }
 
 .wish-card {
     text-align: center;
-    padding: 25px 20px;
+    padding: 25px 18px;
     margin-bottom: 0;
 }
 
@@ -511,13 +579,13 @@ body {
 }
 
 .wish-card h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
     margin-bottom: 10px;
     color: #fff;
 }
 
 .wish-card p {
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
     color: var(--text-sub);
 }
 
@@ -530,7 +598,7 @@ body {
 
 .accordion-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.03);
 }
@@ -541,7 +609,7 @@ body {
     background: transparent;
     border: none;
     color: #fff;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.4vw, 1rem);
     font-weight: 600;
     display: flex;
     justify-content: space-between;
@@ -549,6 +617,7 @@ body {
     cursor: pointer;
     text-align: left;
     transition: background 0.3s ease;
+    min-height: 50px;
 }
 
 .accordion-header:hover {
@@ -562,6 +631,7 @@ body {
 
 .accordion-header .arrow {
     transition: transform 0.3s ease;
+    margin-left: 10px;
 }
 
 .accordion-item.active .arrow {
@@ -574,64 +644,12 @@ body {
     transition: max-height 0.3s ease;
     padding: 0 20px;
     color: var(--text-sub);
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2.2vw, 0.95rem);
 }
 
 .accordion-item.active .accordion-content {
     padding: 15px 20px 20px;
-    max-height: 200px;
-}
-
-/* Tabs & Copy Box */
-.tabs-header {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-    overflow-x: auto;
-}
-
-.tab-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-sub);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.tab-btn.active {
-    background: rgba(255, 77, 109, 0.2);
-    color: #ff4d6d;
-    border: 1px solid rgba(255, 77, 109, 0.4);
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
-
-.copy-box {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.copy-box p {
-    font-size: 0.95rem;
-    color: #e2d9f3;
-    line-height: 1.7;
-    margin-bottom: 15px;
+    max-height: 220px;
 }
 
 /* Toast */
@@ -648,6 +666,9 @@ body {
     box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
     z-index: 2000;
     transition: opacity 0.3s ease;
+    text-align: center;
+    max-width: 90%;
+    font-size: 0.9rem;
 }
 
 .toast.hidden {
@@ -659,8 +680,18 @@ body {
 .app-footer {
     text-align: center;
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
     margin-top: 30px;
+}
+
+.song-credit {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+.song-credit a {
+    color: #ff9ebb;
+    text-decoration: underline;
 }
 
 @keyframes fadeIn {
@@ -668,18 +699,89 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Media Queries */
-@media (max-width: 600px) {
-    .main-title {
-        font-size: 2.1rem;
+/* =============================================================
+   RESPONSIVE BREAKPOINTS: Desktop, Tablet, Smartphone
+   ============================================================= */
+
+@media (min-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
-    .highlight-name {
-        font-size: 2.8rem;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .app-container {
+        padding: 30px 24px 50px;
     }
-    .glass-card {
-        padding: 25px 18px;
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
+
+    .cake-display-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cake-controls {
+        text-align: left;
+        max-width: 380px;
+    }
+
+    .copy-action-bar {
+        justify-content: center;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .music-control-container {
+        top: 12px;
+        right: 12px;
+    }
+
+    .app-container {
+        padding: 25px 15px 40px;
+    }
+
     .hero-actions {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .wish-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .copy-action-bar {
+        justify-content: center;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+
+    .envelope-wrapper {
+        margin: 10px;
+        max-height: 85vh;
+    }
+
+    .letter-footer {
+        text-align: center;
     }
 }

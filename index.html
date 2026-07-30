@@ -21,16 +21,25 @@
     <!-- Canvas Floating Hearts Background -->
     <canvas id="particles-canvas"></canvas>
 
+    <!-- HTML5 Audio Element for Pamungkas - Happy Birthday To You -->
+    <audio id="bgMusic" src="audio/music.webm" loop preload="auto"></audio>
+
     <!-- Music Control Floating Button -->
     <div class="music-control-container">
-        <button id="musicToggleBtn" class="glass-btn pulse-glow" aria-label="Putar Musik Romantic">
-            <i class="fas fa-music"></i> <span id="musicText">Putar Musik Romantic</span>
+        <button id="musicToggleBtn" class="glass-btn pulse-glow" aria-label="Putar Lagu Pamungkas - Happy Birthday To You">
+            <i class="fas fa-compact-disc fa-spin-slow"></i> <span id="musicText">Putar Lagu Pamungkas 🎵</span>
         </button>
     </div>
 
     <!-- Main Container -->
     <div class="app-container">
         
+        <!-- Song Badge Banner -->
+        <div class="song-info-banner">
+            <i class="fab fa-youtube youtube-icon"></i>
+            <span>Song: <strong>Pamungkas - Happy Birthday To You</strong></span>
+        </div>
+
         <!-- Header / Hero Section -->
         <header class="hero-section">
             <div class="badge-container">
@@ -62,7 +71,7 @@
         <section id="envelope-section" class="envelope-modal hidden">
             <div class="modal-overlay" onclick="closeEnvelope()"></div>
             <div class="envelope-wrapper">
-                <button class="close-modal-btn" onclick="closeEnvelope()">&times;</button>
+                <button class="close-modal-btn" onclick="closeEnvelope()" aria-label="Tutup surat">&times;</button>
                 
                 <div class="letter-card glass-card">
                     <div class="letter-header">
@@ -126,6 +135,26 @@
                             <p id="typedWishText"></p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Romantic Message Card Section -->
+        <section class="romantic-message-section glass-card">
+            <div class="section-title-wrap">
+                <span class="section-subtitle">Pesan Spesial</span>
+                <h2></h2>
+            </div>
+
+            <div class="romantic-card-box">
+                <div class="quote-decoration"><i class="fas fa-quote-left"></i></div>
+                <p id="romantic-msg-text" class="romantic-msg-content">
+Selamat ulang tahun yang ke-24 untuk calon istriku tercinta, Nur Aida Umaese ❤️✨
+<br><br>
+Di usiamu yang semakin dewasa ini, terima kasih sudah hadir dan menjadi warna paling indah dalam hidupku. Senyummu selalu jadi penenang, dan kebaikan hatimu membuatku makin yakin bahwa kamu adalah takdir terbaik yang Allah kirimkan.
+<br><br>
+Semoga di usia 24 tahun ini, Sayang aku makin bahagia, sehat selalu, dipanjangkan umurnya, dan dimudahkan segala niat baik kita menuju hari pernikahan kelak. Aku cinta kamu, Sayang. Happy 24th Birthday! 🌹🎂🥂
+                </p>
                 </div>
             </div>
         </section>
@@ -204,65 +233,10 @@
             </div>
         </section>
 
-        <!-- Interactive Custom Greeting Generator / Copy Section -->
-        <section class="wishes-copy-section glass-card">
-            <div class="section-title-wrap">
-                <span class="section-subtitle">Pilihan Kata Ucapan</span>
-                <h2>Pesan Chat Ulang Tahun (Siap Kirim)</h2>
-            </div>
-
-            <div class="tabs-container">
-                <div class="tabs-header">
-                    <button class="tab-btn active" onclick="switchTab(0)">Penuh Cinta & Romantis</button>
-                    <button class="tab-btn" onclick="switchTab(1)">Doa & Islami</button>
-                    <button class="tab-btn" onclick="switchTab(2)">Singkat & Menyentuh</button>
-                </div>
-
-                <div class="tabs-body">
-                    <!-- Tab 0 -->
-                    <div class="tab-content active" id="tab-0">
-                        <div class="copy-box">
-                            <p id="msg-0">
-Selamat ulang tahun yang ke-24 untuk calon istriku tercinta, Nur Aida Umaese ❤️✨
-<br><br>
-Di usiamu yang semakin dewasa ini, terima kasih sudah hadir dan menjadi warna paling indah dalam hidupku. Senyummu selalu jadi penenang, dan kebaikan hatimu membuatku makin yakin bahwa kamu adalah takdir terbaik yang Allah kirimkan.
-<br><br>
-Semoga di usia 24 tahun ini, Aida makin bahagia, sehat selalu, dipanjangkan umurnya, dan dimudahkan segala niat baik kita menuju hari pernikahan kelak. Aku cinta kamu, Sayang. Happy 24th Birthday! 🌹🎂🥂
-                            </p>
-                            <button class="btn btn-sm btn-gold" onclick="copyText('msg-0')"><i class="fas fa-copy"></i> Salin Ucapan</button>
-                        </div>
-                    </div>
-
-                    <!-- Tab 1 -->
-                    <div class="tab-content" id="tab-1">
-                        <div class="copy-box">
-                            <p id="msg-1">
-Barakallah fii umrik calon istriku tercinta, Nur Aida Umaese yang ke-24 tahun 🤲❤️
-<br><br>
-Semoga Allah SWT senantiasa melimpahkan rahmat, kesehatan, keberkahan umur, dan kebahagiaan yang tak pernah terputus untukmu. Semoga di usia yang ke-24 ini, Aida semakin disayang Allah, dijauhkan dari segala keburukan, dan Allah lancarkan serta permudah jalan kita menuju ikatan suci pernikahan yang sakinah, mawaddah, warahmah. Aamiin ya Rabbal 'Alamin. 🕊️✨
-                            </p>
-                            <button class="btn btn-sm btn-gold" onclick="copyText('msg-1')"><i class="fas fa-copy"></i> Salin Ucapan</button>
-                        </div>
-                    </div>
-
-                    <!-- Tab 2 -->
-                    <div class="tab-content" id="tab-2">
-                        <div class="copy-box">
-                            <p id="msg-2">
-Happy 24th Birthday, Nur Aida Umaese — calon istri impianku! 💕🎂
-<br><br>
-Semoga di umur yang ke-24 ini, semua impian manis Aida bisa terwujud satu per satu. Terima kasih selalu ada dan mencintaiku dengan tulus. Aku bersyukur memiliki kamu di sisiku. Dilancarkan terus ya sayang sampai hari-H kita. I love you so much! 🥰
-                            </p>
-                            <button class="btn btn-sm btn-gold" onclick="copyText('msg-2')"><i class="fas fa-copy"></i> Salin Ucapan</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer class="app-footer">
             <p>Made with ❤️ for <strong>Nur Aida Umaese</strong> | 24th Birthday Celebration</p>
+            <p class="song-credit">🎶 Background Music: <a href="https://www.youtube.com/watch?v=wSm9PIIQhiI" target="_blank" rel="noopener">Pamungkas - Happy Birthday To You</a></p>
         </footer>
     </div>
 
