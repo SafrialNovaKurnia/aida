@@ -1,4 +1,4 @@
-// JavaScript Interactive Logic for Nur Aida Umaese 23rd Birthday Web App
+// JavaScript Interactive Logic for Nur Aida Umaese 24th Birthday Web App
 
 document.addEventListener('DOMContentLoaded', () => {
     initParticlesCanvas();
@@ -122,7 +122,6 @@ function setupAudioSynth() {
 function startRomanticTune() {
     isPlayingMusic = true;
 
-    // Gentle chord frequencies for romantic ambient (C major 7th / F major 7th vibes)
     const notes = [
         [261.63, 329.63, 392.00, 493.88], // Cmaj7
         [349.23, 440.00, 523.25, 659.25], // Fmaj7
@@ -145,7 +144,6 @@ function startRomanticTune() {
             osc.type = 'sine';
             osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-            // Soft envelope
             gain.gain.setValueAtTime(0, audioCtx.currentTime);
             gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.4);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 2.8);
@@ -195,7 +193,7 @@ function blowCandles() {
     document.querySelectorAll('.flame-particle').forEach(f => f.classList.add('extinguished'));
 
     const btn = document.getElementById('blowCandleBtn');
-    btn.innerHTML = '<i class="fas fa-check-circle"></i> Lilin ke-23 Telah Ditiup! ✨';
+    btn.innerHTML = '<i class="fas fa-check-circle"></i> Lilin ke-24 Telah Ditiup! ✨';
     btn.classList.remove('pulse-btn');
     btn.style.opacity = '0.8';
 
@@ -205,7 +203,7 @@ function blowCandles() {
 
     // Typewriter effect for wish
     const textElement = document.getElementById('typedWishText');
-    const fullText = "Bismillah... Semoga di usia ke-23 ini, Nur Aida Umaese selalu dilimpahi keberkahan, kebahagiaan sejati, kesehatan, dan dilancarkan jalan menuju pernikahan kita. Aamiin! 🤲💖";
+    const fullText = "Bismillah... Semoga di usia ke-24 ini, Nur Aida Umaese selalu dilimpahi keberkahan, kebahagiaan sejati, kesehatan, dan dilancarkan jalan menuju pernikahan kita. Aamiin! 🤲💖";
     
     let i = 0;
     textElement.innerHTML = '';
